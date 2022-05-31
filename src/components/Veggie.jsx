@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import '@splidejs/splide/dist/css/splide.min.css';
 import styled from "styled-components";
+import {Link} from 'react-router-dom';
 
 function Veggie() {
 
@@ -46,9 +47,11 @@ function Veggie() {
                     return (
                         <SplideSlide key={recipe.id}>
                             <Card>
-                                <p>{recipe.title}</p>
-                                <img src={recipe.image} alt={recipe.title}/>
-                                <Gradient />
+                                <Link to={"/recipe/" + recipe.id}>
+                                    <p>{recipe.title}</p>
+                                    <img src={recipe.image} alt={recipe.title}/>
+                                    <Gradient />
+                                </Link>
                             </Card>
                         </SplideSlide>
                     );
@@ -64,6 +67,7 @@ const Wrapper = styled.div`
 `;
 const Card = styled.div`
   min-height: 15rem;
+  width: auto;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
@@ -84,7 +88,7 @@ const Card = styled.div`
     bottom: 0%;
     transform: translate(-50%, 0%);
     color: white;
-    width: 100%;
+    //width: 100%;
     text-align: center;
     font-weight: 600;
     font-size: 1rem;

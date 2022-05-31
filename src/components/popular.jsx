@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+import {Link} from 'react-router-dom';
 
 function Popular() {
 
@@ -46,9 +47,11 @@ function Popular() {
                         return (
                             <SplideSlide key={recipe.id}>
                                 <Card>
-                                    <p>{recipe.title}</p>
-                                    <img src={recipe.image} alt={recipe.title}/>
-                                    <Gradient />
+                                    <Link to={"/recipe/" + recipe.id}>
+                                        <p>{recipe.title}</p>
+                                        <img src={recipe.image} alt={recipe.title}/>
+                                        <Gradient />
+                                    </Link>
                                 </Card>
                             </SplideSlide>
                         );
@@ -60,13 +63,16 @@ function Popular() {
 }
 
 const Wrapper = styled.div`
-  margin: 4rem 0rem
+  margin: 4rem 0rem;
+  //border: black 1px solid;
 `;
 const Card = styled.div`
   min-height: 15rem;
+  width: auto;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
+  //border: white 1px solid;
 
   img{
     border-radius: 2rem;
@@ -75,6 +81,7 @@ const Card = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    //border: blue 1px solid;
   }
   
   p{
@@ -84,12 +91,13 @@ const Card = styled.div`
     bottom: 0%;
     transform: translate(-50%, 0%);
     color: white;
-    width: 100%;
+    //width: 100%;
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
     height: 40%;
     display: flex;
+    //border: red 1px solid;
   }
   
 `;
